@@ -9,7 +9,7 @@ public class Exit implements ICommand {
     }
 
     @Override
-    public void man() {
-        System.out.println("ru.spbau.pavlyutchenko.task1.Command exit close the program. This command have no args.");
+    public String man() {
+        return "ru.spbau.pavlyutchenko.task1.Command exit close the program. This command have no args.";
     }
 }

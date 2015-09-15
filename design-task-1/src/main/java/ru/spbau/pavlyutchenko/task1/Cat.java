@@ -29,7 +29,7 @@ public class Cat implements ICommand {
     }
 
     @Override
-    public void man() {
-        System.out.println("ru.spbau.pavlyutchenko.task1.Cat command prints given file. This command accept filename as argument.");
+    public String man() {
+        return "ru.spbau.pavlyutchenko.task1.Cat command prints given file. This command accept filename as argument.";
     }
 }

@@ -8,7 +8,7 @@ public class Pwd implements ICommand {
     }
 
     @Override
-    public void man() {
-        System.out.println("ru.spbau.pavlyutchenko.task1.Command pwd print current work directory. This command have no args.");
+    public String man() {
+        return "ru.spbau.pavlyutchenko.task1.Command pwd print current work directory. This command have no args.";
     }
 }

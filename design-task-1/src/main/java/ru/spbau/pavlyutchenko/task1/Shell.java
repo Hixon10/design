@@ -58,42 +58,17 @@ public class Shell {
     }
 
     private String executeCommand(String[] args, Boolean isFirstCommand) {
-        boolean isManCommand = args[0].equals("man");
-        String commandName = getCommandName(args);
-
+        String commandName = args[0];
         ICommand command = commands.get(commandName);
         String result = "";
 
         if (command != null) {
-            if (isManCommand) {
-                command.man();
-            } else {
-                result = command.run(args, isFirstCommand);
-            }
+            result = command.run(args, isFirstCommand);
         } else {
             System.out.println("There is no command with " + commandName + " name");
         }
 
         return result;
-    }
-
-    private String getCommandName(String[] args) {
-        String commandName;
-
-        boolean isManCommand = args[0].equals("man");
-
-        if (isManCommand) {
-            if (args.length == 1) {
-                System.out.println("There is no arg for man command");
-                return "";
-            } else {
-                commandName = args[1];
-            }
-        } else {
-            commandName = args[0];
-        }
-
-        return commandName;
     }
 
     private void loadCommands() throws ReflectiveOperationException {

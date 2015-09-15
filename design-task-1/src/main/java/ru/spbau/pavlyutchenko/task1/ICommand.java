@@ -2,5 +2,5 @@ package ru.spbau.pavlyutchenko.task1;
 
 public interface ICommand {
     String run(String[] args, Boolean isFirstCommand);
-    void man();
+    String man();
 }

@@ -52,7 +52,7 @@ public class Wc implements ICommand {
     }
 
     @Override
-    public void man() {
-        System.out.println("ru.spbau.pavlyutchenko.task1.Wc command prints number of lines, number of words, length and name given file. This command accept filename as argument.");
+    public String man() {
+        return "ru.spbau.pavlyutchenko.task1.Wc command prints number of lines, number of words, length and name given file. This command accept filename as argument.";
     }
 }
