@@ -118,6 +118,6 @@ public class Grep implements ICommand {
 
     @Override
     public String man() {
-        return "The grepHelper command prints lines matching a pattern. This command accepts filename as argument.";
+        return "The grep command prints lines matching a pattern. This command accepts filename as argument.";
     }
 }
