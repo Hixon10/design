@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.regex.Pattern;
 
-@Command(name = "grepHelper")
+@Command(name = "grep")
 public class Grep implements ICommand {
 
     @Override
