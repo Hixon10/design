@@ -8,45 +8,28 @@ import java.util.List;
 @Command(name = "wc")
 public class Wc implements ICommand {
     @Override
-    public String run(String[] args, Boolean isFirstCommand) {
+    public String run(ArrayList<String> input, String[] args) {
         String result = "";
 
-        try {
-            if (args.length < 2) {
-                System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.Wc");
-                return "";
-            }
-
-            List<String> lines;
-            File file = null;
-
-            if (isFirstCommand) {
-                file = new File(args[1]);
-
-                lines = Files.readAllLines(file.toPath());
-            } else {
-                lines = new ArrayList<>();
-                lines.add(args[args.length - 1]);
-            }
-
-            int numberOfLines = lines.size();
-
-            int numberOfWords = 0;
-            for (String line : lines) {
-                String[] words = line.split("\\s+");
-                numberOfWords += words.length;
-            }
-
-            result = numberOfLines + " " + numberOfWords + " ";
-
-            if (isFirstCommand) {
-                result += file.length() + " " + file.getName();
-            } else {
-                result += args[args.length - 1].length();
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        if (input.size() == 0) {
+            System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.Wc");
+            return "";
         }
+
+        List<String> lines = new ArrayList<>(input);
+
+        int numberOfLines = lines.size();
+        int size = 0;
+
+        int numberOfWords = 0;
+        for (String line : lines) {
+            String[] words = line.split("\\s+");
+            numberOfWords += words.length;
+            size += line.length();
+        }
+
+        result = numberOfLines + " " + numberOfWords + " ";
+        result += size;
 
         return result;
     }

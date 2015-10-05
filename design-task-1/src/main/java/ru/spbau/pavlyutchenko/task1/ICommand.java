@@ -1,6 +1,8 @@
 package ru.spbau.pavlyutchenko.task1;
 
+import java.util.ArrayList;
+
 public interface ICommand {
-    String run(String[] args, Boolean isFirstCommand);
+    String run(ArrayList<String> input, String[] args);
     String man();
 }

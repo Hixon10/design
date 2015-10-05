@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
 public class Grep implements ICommand {
 
     @Override
-    public String run(String[] args, Boolean isFirstCommand) {
+    public String run(ArrayList<String> input, String[] args) {
         try {
-            if (args.length < 3) {
+            if (args.length < 2 || input.size() == 0) {
                 System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.Grep");
                 return "";
             }
@@ -34,7 +34,7 @@ public class Grep implements ICommand {
                 }
             }
 
-            return grepHelper(args, isFirstCommand, hasWordReFlag, hasIgnoreCaseFlag, hasAfterContextFlag, afterContextFlagValue);
+            return grepHelper(args, input, hasWordReFlag, hasIgnoreCaseFlag, hasAfterContextFlag, afterContextFlagValue);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -42,13 +42,13 @@ public class Grep implements ICommand {
         return "";
     }
 
-    public static String grepHelper(String[] args, Boolean isFirstCommand, boolean hasWordReFlag, boolean hasIgnoreCaseFlag, boolean hasAfterContextFlag, int afterContextFlagValue) throws IOException {
-        List<String> lines = getLines(args, isFirstCommand);
+    public static String grepHelper(String[] args, ArrayList<String> input, boolean hasWordReFlag, boolean hasIgnoreCaseFlag, boolean hasAfterContextFlag, int afterContextFlagValue) throws IOException {
+        List<String> lines = new ArrayList<>(input);
 
         ArrayList<String> resultLines = new ArrayList<>();
         Set<Integer> addedLinesIndex = new HashSet<>();
 
-        String query = args[args.length - 2];
+        String query = args[args.length - 1];
         Pattern re = null;
 
         if (hasIgnoreCaseFlag) {
@@ -103,17 +103,6 @@ public class Grep implements ICommand {
         }
 
         return String.join(System.lineSeparator(), resultLines);
-    }
-
-    private static List<String> getLines(String[] args, Boolean isFirstCommand) throws IOException {
-        List<String> lines;
-        if (isFirstCommand) {
-            File file = new File(args[args.length - 1]);
-            lines = Files.readAllLines(file.toPath());
-        } else {
-            lines = new ArrayList<>(Arrays.asList(args[args.length - 1].split(System.lineSeparator())));
-        }
-        return lines;
     }
 
     @Override

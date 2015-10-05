@@ -3,12 +3,15 @@ package ru.spbau.pavlyutchenko.task1;
 import org.reflections.Reflections;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Set;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
+
 
 public class Shell {
 
@@ -36,13 +39,25 @@ public class Shell {
 
                 String[] args = pipelineArgs[0].split("\\s+");
 
-                String result = executeCommand(args, true);
+                ArrayList<String> lines = new ArrayList<>();
 
-                for (int i = 1; i < pipelineArgs.length; i++) {
+                File file = new File(args[args.length - 1]);
+                if (file.exists()) {
+                    lines = new ArrayList<>(Files.readAllLines(file.toPath()));
+                }
+
+                if (!args[0].equals("man") && args.length > 1) {
+                    args = Arrays.copyOfRange(args, 0, args.length - 1);
+                }
+
+                String result = executeCommand(lines, args);
+
+                  for (int i = 1; i < pipelineArgs.length; i++) {
                     String[] argss = pipelineArgs[i].trim().split("\\s+");
-                    argss = append(argss, result);
+                    ArrayList<String> in = new ArrayList<>();
+                    in.add(result);
 
-                    result = executeCommand(argss, false);
+                    result = executeCommand(in, argss);
                 }
 
                 System.out.println(result);
@@ -50,20 +65,13 @@ public class Shell {
         }
     }
 
-    private static <T> T[] append(T[] arr, T element) {
-        final int N = arr.length;
-        arr = Arrays.copyOf(arr, N + 1);
-        arr[N] = element;
-        return arr;
-    }
-
-    private String executeCommand(String[] args, Boolean isFirstCommand) {
+    private String executeCommand(ArrayList<String> input, String[] args) {
         String commandName = args[0];
         ICommand command = commands.get(commandName);
         String result = "";
 
         if (command != null) {
-            result = command.run(args, isFirstCommand);
+            result = command.run(input, args);
         } else {
             System.out.println("There is no command with " + commandName + " name");
         }

@@ -1,9 +1,11 @@
 package ru.spbau.pavlyutchenko.task1;
 
+import java.util.ArrayList;
+
 @Command(name = "pwd")
 public class Pwd implements ICommand {
     @Override
-    public String run(String[] args, Boolean isFirstCommand) {
+    public String run(ArrayList<String> input, String[] args) {
         return System.getProperty("user.dir");
     }
 

@@ -4,6 +4,7 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @Command(name = "grepJcom")
@@ -21,9 +22,9 @@ public class GrepJCommander implements ICommand {
     }
 
     @Override
-    public String run(String[] args, Boolean isFirstCommand) {
+    public String run(ArrayList<String> input, String[] args) {
         try {
-            if (args.length < 3) {
+            if (args.length < 1) {
                 System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepJCommander");
                 return "";
             }
@@ -38,7 +39,7 @@ public class GrepJCommander implements ICommand {
             int afterContextFlagValue = jct.afterContextFlagValue;
             boolean hasAfterContextFlag = afterContextFlagValue != -1;
 
-            return Grep.grepHelper(args, isFirstCommand, hasWordReFlag, hasIgnoreCaseFlag, hasAfterContextFlag, afterContextFlagValue);
+            return Grep.grepHelper(args, input, hasWordReFlag, hasIgnoreCaseFlag, hasAfterContextFlag, afterContextFlagValue);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

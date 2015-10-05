@@ -3,12 +3,13 @@ package ru.spbau.pavlyutchenko.task1;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.Set;
 
 @Command(name = "man")
 public class Man implements ICommand {
     @Override
-    public String run(String[] args, Boolean isFirstCommand) {
+    public String run(ArrayList<String> input, String[] args) {
         if (args.length == 1) {
             System.out.println("There is no arg for man");
             return "";

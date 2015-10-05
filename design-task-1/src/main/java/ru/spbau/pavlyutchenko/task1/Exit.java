@@ -1,9 +1,11 @@
 package ru.spbau.pavlyutchenko.task1;
 
+import java.util.ArrayList;
+
 @Command(name = "exit")
 public class Exit implements ICommand {
     @Override
-    public String run(String[] args, Boolean isFirstCommand) {
+    public String run(ArrayList<String> input, String[] args) {
         System.exit(0);
         return "";
     }
