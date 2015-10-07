@@ -14,15 +14,7 @@ public class Cat implements ICommand {
             return "";
         }
 
-        String content = "";
-
-        try {
-            content = new String(Files.readAllBytes(Paths.get(input.get(0))));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return content;
+        return String.join(" ", input);
     }
 
     @Override

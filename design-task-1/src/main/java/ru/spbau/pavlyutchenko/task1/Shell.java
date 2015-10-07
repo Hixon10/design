@@ -31,38 +31,43 @@ public class Shell {
             while (true) {
                 String input = br.readLine();
 
-                if (input.trim().length() == 0) {
-                    continue;
-                }
-
-                String[] pipelineArgs = input.split("\\|");
-
-                String[] args = pipelineArgs[0].split("\\s+");
-
-                ArrayList<String> lines = new ArrayList<>();
-
-                File file = new File(args[args.length - 1]);
-                if (file.exists()) {
-                    lines = new ArrayList<>(Files.readAllLines(file.toPath()));
-                }
-
-                if (!args[0].equals("man") && args.length > 1) {
-                    args = Arrays.copyOfRange(args, 0, args.length - 1);
-                }
-
-                String result = executeCommand(lines, args);
-
-                  for (int i = 1; i < pipelineArgs.length; i++) {
-                    String[] argss = pipelineArgs[i].trim().split("\\s+");
-                    ArrayList<String> in = new ArrayList<>();
-                    in.add(result);
-
-                    result = executeCommand(in, argss);
-                }
+                String result = runHelper(input);
 
                 System.out.println(result);
             }
         }
+    }
+
+    public String runHelper(String input) throws IOException {
+        if (input.trim().length() == 0) {
+            return "";
+        }
+
+        String[] pipelineArgs = input.split("\\|");
+
+        String[] args = pipelineArgs[0].split("\\s+");
+
+        ArrayList<String> lines = new ArrayList<>();
+
+        File file = new File(args[args.length - 1]);
+        if (file.exists()) {
+            lines = new ArrayList<>(Files.readAllLines(file.toPath()));
+        }
+
+        if (!args[0].equals("man") && args.length > 1) {
+            args = Arrays.copyOfRange(args, 0, args.length - 1);
+        }
+
+        String result = executeCommand(lines, args);
+
+        for (int i = 1; i < pipelineArgs.length; i++) {
+            String[] argss = pipelineArgs[i].trim().split("\\s+");
+            ArrayList<String> in = new ArrayList<>();
+            in.add(result);
+
+            result = executeCommand(in, argss);
+        }
+        return result;
     }
 
     private String executeCommand(ArrayList<String> input, String[] args) {
