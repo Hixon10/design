@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@Command(name = "grepJcom")
-public class GrepJCommander implements ICommand {
+@CommandAnnotation(name = "grepJcom")
+public class GrepJCommander implements Command {
 
     public class JArgs {
         @Parameter(names = "-A", description = "After context")
@@ -25,7 +25,7 @@ public class GrepJCommander implements ICommand {
     public String run(ArrayList<String> input, String[] args) {
         try {
             if (args.length < 1) {
-                System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepJCommander");
+                System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepJCommander");
                 return "";
             }
 

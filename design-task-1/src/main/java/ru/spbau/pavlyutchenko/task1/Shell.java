@@ -7,21 +7,19 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
 
 public class Shell {
 
-    private final HashMap<String, ICommand> commands = new HashMap<>();
+    private final HashMap<String, Command> commands = new HashMap<>();
 
     public Shell() throws ReflectiveOperationException {
         loadCommands();
     }
 
-    public void register(String commandName, ICommand command) {
+    public void register(String commandName, Command command) {
         commands.put(commandName, command);
     }
 
@@ -72,13 +70,13 @@ public class Shell {
 
     private String executeCommand(ArrayList<String> input, String[] args) {
         String commandName = args[0];
-        ICommand command = commands.get(commandName);
+        Command command = commands.get(commandName);
         String result = "";
 
         if (command != null) {
             result = command.run(input, args);
         } else {
-            System.out.println("There is no command with " + commandName + " name");
+            System.err.println("There is no command with " + commandName + " name");
         }
 
         return result;
@@ -86,14 +84,14 @@ public class Shell {
 
     private void loadCommands() throws ReflectiveOperationException {
         Reflections reflections = new Reflections("ru.spbau.pavlyutchenko.task1");
-        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(Command.class);
+        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(CommandAnnotation.class);
 
         for (Class<?> command : annotated) {
-            Command commandAnnotation = command.getAnnotation(Command.class);
+            CommandAnnotation commandAnnotation = command.getAnnotation(CommandAnnotation.class);
             String name = commandAnnotation.name();
 
             Constructor<?> ctor = command.getConstructor();
-            ICommand objectOfCommand = (ICommand)ctor.newInstance();
+            Command objectOfCommand = (Command)ctor.newInstance();
 
             register(name, objectOfCommand);
         }

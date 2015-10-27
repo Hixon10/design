@@ -6,27 +6,27 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Set;
 
-@Command(name = "man")
-public class Man implements ICommand {
+@CommandAnnotation(name = "man")
+public class Man implements Command {
     @Override
     public String run(ArrayList<String> input, String[] args) {
         if (args.length == 1) {
-            System.out.println("There is no arg for man");
+            System.err.println("There is no arg for man");
             return "";
         }
 
         Reflections reflections = new Reflections("ru.spbau.pavlyutchenko.task1");
-        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(Command.class);
+        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(CommandAnnotation.class);
 
         for (Class<?> command : annotated) {
-            Command commandAnnotation = command.getAnnotation(Command.class);
+            CommandAnnotation commandAnnotation = command.getAnnotation(CommandAnnotation.class);
             String name = commandAnnotation.name();
 
             if (name.equals(args[1])) {
                 Constructor<?> ctor = null;
                 try {
                     ctor = command.getConstructor();
-                    ICommand objectOfCommand = (ICommand) ctor.newInstance();
+                    Command objectOfCommand = (Command) ctor.newInstance();
                     return objectOfCommand.man();
                 } catch (ReflectiveOperationException e) {
                     System.out.println(e.getMessage());
@@ -39,6 +39,6 @@ public class Man implements ICommand {
 
     @Override
     public String man() {
-        return "Command man prints info about given command.";
+        return "CommandAnnotation man prints info about given command.";
     }
 }

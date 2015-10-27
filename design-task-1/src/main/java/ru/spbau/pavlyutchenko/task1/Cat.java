@@ -1,20 +1,17 @@
 package ru.spbau.pavlyutchenko.task1;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
-@Command(name = "cat")
-public class Cat implements ICommand {
+@CommandAnnotation(name = "cat")
+public class Cat implements Command {
     @Override
     public String run(ArrayList<String> input, String[] args) {
         if (input.size() < 1) {
-            System.out.println("There are no filename for command ru.spbau.pavlyutchenko.task1.Cat");
+            System.err.println("Empty input for command ru.spbau.pavlyutchenko.task1.Cat");
             return "";
         }
 
-        return String.join(" ", input);
+        return String.join(System.lineSeparator(), input);
     }
 
     @Override

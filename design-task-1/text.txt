@@ -1,10 +1,1 @@
-
-    > cat README.md
-    I dont't know md syntax, so I'll left this file blank
-
-    > wc README.md
-    1 11 54
-
-    > man cat
-    cat - prints file to standard output
-    cat [FILE]
+пуыкп ыкер ыукр ыукре

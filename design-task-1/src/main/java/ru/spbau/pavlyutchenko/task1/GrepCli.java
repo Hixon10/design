@@ -5,8 +5,8 @@ import org.apache.commons.cli.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@Command(name = "grepCli")
-public class GrepCli implements ICommand {
+@CommandAnnotation(name = "grepCli")
+public class GrepCli implements Command {
 
     private final Options options;
 
@@ -21,7 +21,7 @@ public class GrepCli implements ICommand {
     public String run(ArrayList<String> input, String[] args) {
         try {
             if (args.length < 1) {
-                System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepCli");
+                System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepCli");
                 return "";
             }
 

@@ -1,18 +1,17 @@
 package ru.spbau.pavlyutchenko.task1;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-@Command(name = "wc")
-public class Wc implements ICommand {
+@CommandAnnotation(name = "wc")
+public class Wc implements Command {
     @Override
     public String run(ArrayList<String> input, String[] args) {
         String result = "";
 
         if (input.size() == 0) {
-            System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.Wc");
+            System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.Wc");
             return "";
         }
 
@@ -25,7 +24,14 @@ public class Wc implements ICommand {
         for (String line : lines) {
             String[] words = line.split("\\s+");
             numberOfWords += words.length;
-            size += line.length();
+
+            final byte[] utf8Bytes;
+            try {
+                utf8Bytes = line.getBytes("UTF-8");
+                size += utf8Bytes.length;
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
 
         result = numberOfLines + " " + numberOfWords + " ";

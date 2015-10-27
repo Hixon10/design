@@ -1,19 +1,17 @@
 package ru.spbau.pavlyutchenko.task1;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.*;
 import java.util.regex.Pattern;
 
-@Command(name = "grep")
-public class Grep implements ICommand {
+@CommandAnnotation(name = "grep")
+public class Grep implements Command {
 
     @Override
     public String run(ArrayList<String> input, String[] args) {
         try {
             if (args.length < 2 || input.size() == 0) {
-                System.out.println("There are no args for command ru.spbau.pavlyutchenko.task1.Grep");
+                System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.Grep");
                 return "";
             }
 
@@ -43,7 +41,13 @@ public class Grep implements ICommand {
     }
 
     public static String grepHelper(String[] args, ArrayList<String> input, boolean hasWordReFlag, boolean hasIgnoreCaseFlag, boolean hasAfterContextFlag, int afterContextFlagValue) throws IOException {
-        List<String> lines = new ArrayList<>(input);
+        List<String> lines = null;
+
+        if (input.size() == 1) {
+            lines = Arrays.asList(input.get(0).split(System.lineSeparator()));
+        } else {
+            lines = new ArrayList<>(input);
+        }
 
         ArrayList<String> resultLines = new ArrayList<>();
         Set<Integer> addedLinesIndex = new HashSet<>();

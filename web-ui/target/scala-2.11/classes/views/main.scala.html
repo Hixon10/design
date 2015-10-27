@@ -1,0 +1,48 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>@title</title>
+        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.mousewheel-min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.terminal-min.js")" type="text/javascript"></script>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.terminal.css")">
+    </head>
+    <body>
+
+        <script>
+jQuery(document).ready(function($) {
+    $('body').terminal(function(command, term) {
+        if (command == 'help') {
+            term.echo("available commands are pwd, grep, man, wc, cat");
+        } else {
+            var encodedCmd = btoa(command);
+
+            var response = $.ajax({
+                                type: "GET",
+                                url: "/shell/" + encodedCmd,
+                                async: false
+                            }).responseText;
+
+            response = JSON.parse(response);
+            response = response.result;
+
+            if (response.trim()) {
+                term.echo(response);
+            } else {
+                term.echo("Wrong command");
+            }
+        }
+    }, {
+        greetings: "use help to see available commands",
+        onBlur: function() {
+            return false;
+        }
+    });
+});
+
+</script>
+    </body>
+</html>
