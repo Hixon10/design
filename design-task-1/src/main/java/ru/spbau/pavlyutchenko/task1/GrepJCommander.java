@@ -22,7 +22,7 @@ public class GrepJCommander implements Command {
     }
 
     @Override
-    public String run(ArrayList<String> input, String[] args) {
+    public String run(ArrayList<String> input, String... args) {
         try {
             if (args.length < 1) {
                 System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepJCommander");
@@ -30,7 +30,7 @@ public class GrepJCommander implements Command {
             }
 
             JArgs jct = new JArgs();
-            String[] argv = Arrays.copyOfRange(args, 1, args.length - 2);;
+            String[] argv = Arrays.copyOfRange(args, 1, args.length - 1);
             new JCommander(jct, argv);
 
             boolean hasWordReFlag = jct.hasWordReFlag;

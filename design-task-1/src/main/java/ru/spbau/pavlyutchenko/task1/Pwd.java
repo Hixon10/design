@@ -5,7 +5,7 @@ import java.util.ArrayList;
 @CommandAnnotation(name = "pwd")
 public class Pwd implements Command {
     @Override
-    public String run(ArrayList<String> input, String[] args) {
+    public String run(ArrayList<String> input, String... args) {
         return System.getProperty("user.dir");
     }
 

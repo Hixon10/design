@@ -9,7 +9,7 @@ import java.util.Set;
 @CommandAnnotation(name = "man")
 public class Man implements Command {
     @Override
-    public String run(ArrayList<String> input, String[] args) {
+    public String run(ArrayList<String> input, String... args) {
         if (args.length == 1) {
             System.err.println("There is no arg for man");
             return "";
@@ -39,6 +39,6 @@ public class Man implements Command {
 
     @Override
     public String man() {
-        return "CommandAnnotation man prints info about given command.";
+        return "Command man prints info about given command.";
     }
 }

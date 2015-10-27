@@ -18,7 +18,7 @@ public class GrepCli implements Command {
     }
 
     @Override
-    public String run(ArrayList<String> input, String[] args) {
+    public String run(ArrayList<String> input, String... args) {
         try {
             if (args.length < 1) {
                 System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepCli");

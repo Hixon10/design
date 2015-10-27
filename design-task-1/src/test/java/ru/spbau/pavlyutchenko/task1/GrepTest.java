@@ -3,6 +3,8 @@ package ru.spbau.pavlyutchenko.task1;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -10,13 +12,9 @@ public class GrepTest {
 
     @Test
     public void testSimpleGrepWithoutArgs() throws Exception {
-        ArrayList<String> givenString = new ArrayList<>();
-        givenString.add("some given line with query");
-
-        String[] args = {"grep", "query"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
-        assertEquals(result, givenString.get(0));
+        String result = grep.run(asList("some given line with query"), "grep", "query");
+        assertEquals(result, "some given line with query");
     }
 
     @Test
@@ -124,5 +122,10 @@ public class GrepTest {
         Grep grep = new Grep();
         String result = grep.run(givenString, args);
         assertNotEquals(result, "some given line with query" + System.lineSeparator() + "line 2");
+    }
+
+    private static ArrayList<String> asList(String inputString) {
+        List<String> strings = new ArrayList<String>(Arrays.asList(new String[]{inputString}));
+        return new ArrayList<>(strings);
     }
 }

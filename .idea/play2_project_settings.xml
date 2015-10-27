@@ -14,8 +14,8 @@
           <value>
             <ProjectSettingsEntry>
               <option name="version" value="2.3.8" />
-              <option name="sourceDir" value="C:\Users\Denis\Desktop\design\web-ui\conf" />
-              <option name="confDir" value="C:\Users\Denis\Desktop\design\web-ui\app" />
+              <option name="sourceDir" value="C:\Users\Denis\Desktop\design\web-ui\app" />
+              <option name="confDir" value="C:\Users\Denis\Desktop\design\web-ui\conf" />
               <option name="templateImports">
                 <list>
                   <option value="play.api.templates.PlayMagic._" />

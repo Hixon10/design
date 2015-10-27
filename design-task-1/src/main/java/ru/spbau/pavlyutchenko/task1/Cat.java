@@ -5,7 +5,7 @@ import java.util.ArrayList;
 @CommandAnnotation(name = "cat")
 public class Cat implements Command {
     @Override
-    public String run(ArrayList<String> input, String[] args) {
+    public String run(ArrayList<String> input, String... args) {
         if (input.size() < 1) {
             System.err.println("Empty input for command ru.spbau.pavlyutchenko.task1.Cat");
             return "";

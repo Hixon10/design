@@ -7,7 +7,7 @@ import java.util.List;
 @CommandAnnotation(name = "wc")
 public class Wc implements Command {
     @Override
-    public String run(ArrayList<String> input, String[] args) {
+    public String run(ArrayList<String> input, String... args) {
         String result = "";
 
         if (input.size() == 0) {
