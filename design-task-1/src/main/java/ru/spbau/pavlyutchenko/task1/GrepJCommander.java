@@ -24,13 +24,13 @@ public class GrepJCommander implements Command {
     @Override
     public String run(ArrayList<String> input, String... args) {
         try {
-            if (args.length < 1) {
-                System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepJCommander");
+            if (args.length < 1 || input.size() == 0) {
+                System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepCli");
                 return "";
             }
 
             JArgs jct = new JArgs();
-            String[] argv = Arrays.copyOfRange(args, 1, args.length - 1);
+            String[] argv = Arrays.copyOfRange(args, 0, args.length - 1);
             new JCommander(jct, argv);
 
             boolean hasWordReFlag = jct.hasWordReFlag;

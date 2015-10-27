@@ -10,7 +10,7 @@ public class Grep implements Command {
     @Override
     public String run(ArrayList<String> input, String... args) {
         try {
-            if (args.length < 2 || input.size() == 0) {
+            if (args.length < 1 || input.size() == 0) {
                 System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.Grep");
                 return "";
             }

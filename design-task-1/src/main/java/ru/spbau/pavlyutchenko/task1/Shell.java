@@ -74,7 +74,8 @@ public class Shell {
         String result = "";
 
         if (command != null) {
-            result = command.run(input, args);
+            String argss[] = Arrays.copyOfRange(args, 1, args.length);
+            result = command.run(input, argss);
         } else {
             System.err.println("There is no command with " + commandName + " name");
         }

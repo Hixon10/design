@@ -13,75 +13,54 @@ public class GrepTest {
     @Test
     public void testSimpleGrepWithoutArgs() throws Exception {
         Grep grep = new Grep();
-        String result = grep.run(asList("some given line with query"), "grep", "query");
+        String result = grep.run(asList("some given line with query"), "query");
         assertEquals(result, "some given line with query");
     }
 
     @Test
     public void testSimpleGrepWithoutArgs2() throws Exception {
-        ArrayList<String> givenString = new ArrayList<>();
-        givenString.add("some given line with query");
-
-        String[] args = {"grep", "weirdWord"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
-        assertNotEquals(result, givenString);
+        String result = grep.run(asList("some given line with query"), "weirdWord");
+        assertNotEquals(result, "some given line with query");
     }
 
     @Test
     public void testGrepWithIgnoreCase() throws Exception {
-        ArrayList<String> givenString = new ArrayList<>();
-        givenString.add("some given line with query");
-
-        String[] args = {"grep", "-i", "QueRy"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
-        assertEquals(result, givenString.get(0));
+        String result = grep.run(asList("some given line with query"), "-i", "QuEry");
+        assertEquals(result, "some given line with query");
     }
 
     @Test
     public void testGrepWithWordRegexp() throws Exception {
-        ArrayList<String> givenString = new ArrayList<>();
-        givenString.add("some given line with query");
-
-        String[] args = {"grep", "-w", "lin"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
-        assertNotEquals(result, givenString.get(0));
+        String result = grep.run(asList("some given line with query"), "-w", "lin");
+        assertNotEquals(result, "some given line with query");
     }
 
     @Test
     public void testGrepWithWordRegexp2() throws Exception {
-        ArrayList<String> givenString = new ArrayList<>();
-        givenString.add("some given line with query");
-
-        String[] args = {"grep", "-w", "line"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
-        assertEquals(result, givenString.get(0));
+        String result = grep.run(asList("some given line with query"), "-w", "line");
+        assertEquals(result, "some given line with query");
     }
 
     @Test
     public void testGrepWithWordRegexpAndIgnoreCase() throws Exception {
-        ArrayList<String> givenString = new ArrayList<>();
-        givenString.add("some given line with query");
-
-        String[] args = {"grep", "-w", "-i", "liNe"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
-        assertEquals(result, givenString.get(0));
+        String result = grep.run(asList("some given line with query"), "-w", "-i", "liNe");
+        assertEquals(result, "some given line with query");
     }
 
     @Test
     public void testGrepWithAfterContext() throws Exception {
+        Grep grep = new Grep();
         ArrayList<String> givenString = new ArrayList<>();
         givenString.add("some given line with query");
         givenString.add("line 2");
         givenString.add("line 3");
 
-        String[] args = {"grep", "-A", "1", "query"};
-        Grep grep = new Grep();
-        String result = grep.run(givenString, args);
+        String result = grep.run(givenString, "-A", "1", "query");
         assertEquals(result, "some given line with query" + System.lineSeparator() + "line 2");
     }
 
@@ -91,10 +70,9 @@ public class GrepTest {
         givenString.add("some given line with query");
         givenString.add("line 2");
         givenString.add("line 3");
-
-        String[] args = {"grep", "-A", "1", "-i", "qUerY"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
+
+        String result = grep.run(givenString, "-A", "1", "-i", "qUerY");
         assertEquals(result, "some given line with query" + System.lineSeparator() + "line 2");
     }
 
@@ -104,10 +82,9 @@ public class GrepTest {
         givenString.add("some given line with query");
         givenString.add("line 2");
         givenString.add("line 3");
-
-        String[] args = {"grep", "-A", "1", "-i", "-w", "qUerY"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
+
+        String result = grep.run(givenString, "-A", "1", "-i", "-w", "qUerY");
         assertEquals(result, "some given line with query" + System.lineSeparator() + "line 2");
     }
 
@@ -118,9 +95,8 @@ public class GrepTest {
         givenString.add("line 2");
         givenString.add("line 3");
 
-        String[] args = {"grep", "-A", "1", "-i", "-w", "qUer"};
         Grep grep = new Grep();
-        String result = grep.run(givenString, args);
+        String result = grep.run(givenString, "-A", "1", "-i", "-w", "qUer");
         assertNotEquals(result, "some given line with query" + System.lineSeparator() + "line 2");
     }
 

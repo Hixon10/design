@@ -10,7 +10,7 @@ import java.util.Set;
 public class Man implements Command {
     @Override
     public String run(ArrayList<String> input, String... args) {
-        if (args.length == 1) {
+        if (args.length == 0) {
             System.err.println("There is no arg for man");
             return "";
         }
@@ -22,7 +22,7 @@ public class Man implements Command {
             CommandAnnotation commandAnnotation = command.getAnnotation(CommandAnnotation.class);
             String name = commandAnnotation.name();
 
-            if (name.equals(args[1])) {
+            if (name.equals(args[0])) {
                 Constructor<?> ctor = null;
                 try {
                     ctor = command.getConstructor();
