@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -14,6 +15,34 @@ public class GrepTest {
     public void testSimpleGrepWithoutArgs() throws Exception {
         Grep grep = new Grep();
         String result = grep.run(asList("some given line with query"), "query");
+        assertEquals(result, "some given line with query");
+    }
+
+    @Test
+    public void testGrepWithStartOfLineSymbol() throws Exception {
+        Grep grep = new Grep();
+        String result = grep.run(asList("some given line with query"), "^some");
+        assertEquals(result, "some given line with query");
+    }
+
+    @Test
+    public void testGrepWithStartOfLineSymbolAndIgnoreCase() throws Exception {
+        Grep grep = new Grep();
+        String result = grep.run(asList("some given line with query"), "-i", "^Some");
+        assertEquals(result, "some given line with query");
+    }
+
+    @Test
+    public void testGrepWithEndOfLineSymbol() throws Exception {
+        Grep grep = new Grep();
+        String result = grep.run(asList("some given line with query"), "query$");
+        assertEquals(result, "some given line with query");
+    }
+
+    @Test
+    public void testGrepWithEndOfLineSymbolAndIgnoreCase() throws Exception {
+        Grep grep = new Grep();
+        String result = grep.run(asList("some given line with query"), "-i", "Query$");
         assertEquals(result, "some given line with query");
     }
 
@@ -101,7 +130,6 @@ public class GrepTest {
     }
 
     private static ArrayList<String> asList(String inputString) {
-        List<String> strings = new ArrayList<String>(Arrays.asList(new String[]{inputString}));
-        return new ArrayList<>(strings);
+        return new ArrayList<>(Collections.singletonList(inputString));
     }
 }

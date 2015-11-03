@@ -3,7 +3,6 @@ package ru.spbau.pavlyutchenko.task1;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,28 +22,24 @@ public class GrepJCommander implements Command {
 
     @Override
     public String run(ArrayList<String> input, String... args) {
-        try {
-            if (args.length < 1 || input.size() == 0) {
-                System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepCli");
-                return "";
-            }
-
-            JArgs jct = new JArgs();
-            String[] argv = Arrays.copyOfRange(args, 0, args.length - 1);
-            new JCommander(jct, argv);
-
-            boolean hasWordReFlag = jct.hasWordReFlag;
-            boolean hasIgnoreCaseFlag = jct.hasIgnoreCaseFlag;
-
-            int afterContextFlagValue = jct.afterContextFlagValue;
-            boolean hasAfterContextFlag = afterContextFlagValue != -1;
-
-            return Grep.grepHelper(args, input, hasWordReFlag, hasIgnoreCaseFlag, hasAfterContextFlag, afterContextFlagValue);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        if (args.length < 1 || input.size() == 0) {
+            System.err.println("There are no args for command ru.spbau.pavlyutchenko.task1.GrepCli");
+            return "";
         }
 
-        return "";
+        JArgs jct = new JArgs();
+        String[] argv = Arrays.copyOfRange(args, 0, args.length - 1);
+        new JCommander(jct, argv);
+
+        boolean hasWordReFlag = jct.hasWordReFlag;
+        boolean hasIgnoreCaseFlag = jct.hasIgnoreCaseFlag;
+
+        int afterContextFlagValue = jct.afterContextFlagValue;
+        if (afterContextFlagValue == -1) {
+            afterContextFlagValue = 0;
+        }
+
+        return Grep.grepHelper(args, input, new GrepArgs(hasWordReFlag, hasIgnoreCaseFlag, afterContextFlagValue));
     }
 
     @Override
