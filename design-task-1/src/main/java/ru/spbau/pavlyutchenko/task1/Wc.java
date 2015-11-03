@@ -24,14 +24,7 @@ public class Wc implements Command {
         for (String line : lines) {
             String[] words = line.split("\\s+");
             numberOfWords += words.length;
-
-            final byte[] utf8Bytes;
-            try {
-                utf8Bytes = line.getBytes("UTF-8");
-                size += utf8Bytes.length;
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+            size += line.getBytes().length;
         }
 
         result = numberOfLines + " " + numberOfWords + " ";

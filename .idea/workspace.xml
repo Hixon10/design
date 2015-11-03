@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6f8fb2d-8542-4d37-b28a-92cb0ddd9c89" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/GrepArgs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/Grep.class" afterPath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/Grep.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/GrepCli.class" afterPath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/GrepCli.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/GrepJCommander$JArgs.class" afterPath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/GrepJCommander$JArgs.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/GrepJCommander.class" afterPath="$PROJECT_DIR$/design-task-1/target/classes/ru/spbau/pavlyutchenko/task1/GrepJCommander.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/target/test-classes/ru/spbau/pavlyutchenko/task1/GrepTest.class" afterPath="$PROJECT_DIR$/design-task-1/target/test-classes/ru/spbau/pavlyutchenko/task1/GrepTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Grep.java" afterPath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Grep.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/GrepCli.java" afterPath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/GrepCli.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/GrepJCommander.java" afterPath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/GrepJCommander.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/src/test/java/ru/spbau/pavlyutchenko/task1/GrepTest.java" afterPath="$PROJECT_DIR$/design-task-1/src/test/java/ru/spbau/pavlyutchenko/task1/GrepTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Wc.java" afterPath="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Wc.java" />
     </list>
     <ignored path="design.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,8 +96,8 @@
       <file leaf-file-name="Wc.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Wc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7906977">
-              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.60465115">
+              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -231,7 +221,6 @@
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Cat.java" />
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Exit.java" />
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Pwd.java" />
-        <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Wc.java" />
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Man.java" />
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Shell.java" />
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/GrepCli.java" />
@@ -239,6 +228,7 @@
         <option value="$PROJECT_DIR$/design-task-1/src/test/java/ru/spbau/pavlyutchenko/task1/GrepTest.java" />
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Grep.java" />
         <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/GrepArgs.java" />
+        <option value="$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Wc.java" />
       </list>
     </option>
   </component>
@@ -1141,12 +1131,12 @@
       <workItem from="1445952311616" duration="1268000" />
       <workItem from="1445954841249" duration="353000" />
       <workItem from="1446047670077" duration="69000" />
-      <workItem from="1446530766700" duration="8064000" />
+      <workItem from="1446530766700" duration="8596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45763000" />
+    <option name="totallyTimeSpent" value="46295000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1581,14 +1571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/design-task-1/src/test/java/ru/spbau/pavlyutchenko/task1/GrepTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Grep.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1597,10 +1579,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/design-task-1/src/test/java/ru/spbau/pavlyutchenko/task1/GrepTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/design-task-1/src/main/java/ru/spbau/pavlyutchenko/task1/Wc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7906977">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.60465115">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
           <folding />
         </state>
       </provider>
