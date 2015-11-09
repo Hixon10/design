@@ -15,15 +15,17 @@ public class Wc implements Command {
             return "";
         }
 
-        List<String> lines = new ArrayList<>(input);
-
-        int numberOfLines = lines.size();
+        int numberOfLines = input.size();
         int size = 0;
 
         int numberOfWords = 0;
-        for (String line : lines) {
+        for (String line : input) {
             String[] words = line.split("\\s+");
             numberOfWords += words.length;
+
+            if (size != 0) {
+                size += System.lineSeparator().getBytes().length;
+            }
             size += line.getBytes().length;
         }
 
