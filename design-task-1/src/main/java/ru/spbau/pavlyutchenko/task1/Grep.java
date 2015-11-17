@@ -35,24 +35,22 @@ public class Grep implements Command {
         List<String> lines = getInputLines(input);
 
         ArrayList<String> resultLines = new ArrayList<>();
-        Set<Integer> addedLinesIndex = new HashSet<>();
 
         Pattern re = buildPattern(grepArgs.hasWordReFlag(), grepArgs.hasIgnoreCaseFlag(), args[args.length - 1]);
+        int addedLeft = grepArgs.getAfterContextFlagValue();
+        int counter = addedLeft + 1;
 
         for (int j = 0; j < lines.size(); j++) {
             String line = lines.get(j);
 
             if (re.matcher(line).find()) {
-                int addedLeft = grepArgs.getAfterContextFlagValue() + 1;
-
-                for (int d = j; d < lines.size() && addedLeft > 0; d++) {
-                    if (!addedLinesIndex.contains(d)) {
-                        resultLines.add(lines.get(d));
-                        addedLinesIndex.add(d);
-                    }
-                    addedLeft--;
-                }
+                counter = 0;
+                resultLines.add(line);
+            } else if (counter <= addedLeft) {
+                resultLines.add(line);
             }
+
+            counter++;
         }
 
         return String.join(System.lineSeparator(), resultLines);

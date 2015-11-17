@@ -64,7 +64,7 @@ public class GrepTest {
     public void testGrepWithWordRegexp() throws Exception {
         Grep grep = new Grep();
         String result = grep.run(asList("some given line with query"), "-w", "lin");
-        assertNotEquals(result, "some given line with query");
+        assertEquals(result, "");
     }
 
     @Test
